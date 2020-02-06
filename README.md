@@ -14,9 +14,7 @@ You should have installed Docker and Docker Compose in your machine.
 
 ## Run
 ```bash
-git clone https://github.com/a1brz/eth-private-network.git
-cd eth-private-network
-docker-compose up
+docker-compose up --build
 ```
 
 After all you can find:
@@ -26,3 +24,20 @@ After all you can find:
 - Node 3 (miner) RPC access at [http://localhost:8547](http://localhost:8547)
 - Swarm Node 1 HTTP access at [http://localhost:8500](http://localhost:8500)
 - Swarm Node 2 HTTP access at [http://localhost:8501](http://localhost:8501)
+- Block explorer at [http://localhost:3500](http://localhost:3500)
+
+## Notes
+
+To restart the network from block 0:
+```bash
+docker-compose down -v
+```
+
+Edit the genesis block if you want to change accounts. Genesis block file: `node/genesis.json`
+
+To use with metamask:
+ - Add a new **custom RPC network**
+ - Set RPC URL to http://localhost:8545
+ - Set chain ID to 2833
+
+

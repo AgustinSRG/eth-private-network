@@ -75,7 +75,6 @@ services:
       --ethstats node-miner-2:${NETSTATS_SECRET}@netstats:3000
     networks:
       - research
-
   node-swarm-1:
     depends_on:
       - bootnode
@@ -104,6 +103,16 @@ services:
     build:
       context: node
     container_name: node-swarm-2
+    networks:
+      - research
+  block-explorer:
+    depends_on:
+      - node
+    ports:
+      - 3500:8080
+    build:
+      context: explorer
+    container_name: explorer
     networks:
       - research
 networks:
